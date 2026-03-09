@@ -59,16 +59,17 @@ jobs:
                 this.json = JSON.parse(readFileSync(path).toString());
                 for(const app in this.json){
                   try{
+                    let j = null;
                     switch(`${app}`.toLowerCase()){
                       case "go":
-                        let j = await this.#fetchJson("https://go.dev/dl/?mode=json");
+                        j = await this.#fetchJson("https://go.dev/dl/?mode=json");
                         if(j && Array.isArray(j) && j.length > 0 && j[0]?.version){
                           this.#setVersion(app, j[0].version);
                         }
                       break;
 
                       case "openssl":
-                        let j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/releases/latest`);
+                        j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/releases/latest`);
                         if(j && j?.tag_name){
                           this.#setVersion(app, `${j.tag_name}`.replace(this.github[app].replace, ""));
                         }
@@ -76,7 +77,7 @@ jobs:
 
                       case "python":
                         for(let i=1; i<=10; i++){
-                          let j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/tags?page=${i}`);
+                          j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/tags?page=${i}`);
                           if(j && Array.isArray(j) && j.length > 0){
                             const found = this.github[app].match(j);
                             if(found){
