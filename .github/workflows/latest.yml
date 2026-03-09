@@ -107,7 +107,12 @@ jobs:
               #setVersion(app, version){
                 const v = semver.valid(semver.coerce(version));
                 if(v){
-                  this.json[app] = v;
+                  if(this.json[app] !== v){
+                    core.info(`updated semver for ${app} from ${this.json[app]} to ${v}`);
+                    this.json[app] = v;
+                  }else{
+                    core.warning(`no updated needed for ${app}!`);
+                  }
                 }else{
                   throw new Error(`could not update version for ${app}: ${version}, is not a valid semver (${v})!`);
                 }
