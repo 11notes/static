@@ -30,7 +30,6 @@ jobs:
         with:
           script: |
             const { resolve } = require("node:path");
-            const { resolve } = require("node:path");
             const semver = require("semver");
             class Latest{
               json = {};
