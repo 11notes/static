@@ -1,0 +1,129 @@
+name: cron
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 22 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@85e6279cec87321a52edac9c87bce653a07cf6c2
+        with:
+          ref: 'master'
+
+      - name: setup node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '20'
+      - run: npm i semver
+
+      - name: update latest.json
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const { resolve } = require("node:path");
+            const { resolve } = require("node:path");
+            const semver = require("semver");
+            class Latest{
+              json = {};
+              path = "./src/semver/latest.json";
+              github = {
+                openssl:{
+                  repo:"openssl/openssl",
+                  replace:/openssl-/ig
+                },
+                python:{
+                  repo:"python/cpython",
+                  match:(json) => {
+                    for(tag of json){
+                      if(tag?.name && `${tag.name}`.match(/v[0-9]{1,3}.[0-9]{1,3}.[^A-Za-z]{1,}$/ig)){
+                        return(tag.name);
+                      }
+                    }
+                    return(false);
+                  }
+                }
+              };
+
+              constructor(){}
+
+              async update(){
+                const path = resolve(this.path);
+                this.json = JSON.parse(readFileSync(path).toString());
+                for(const app in this.json){
+                  try{
+                    switch(`${app}`.toLowerCase()){
+                      case "go":
+                        const j = await this.#fetchJson("https://go.dev/dl/?mode=json");
+                        if(j && Array.isArray(j) && j.length > 0 && j[0]?.version){
+                          this.#setVersion(app, j[0].version);
+                        }
+                      break;
+
+                      case "openssl":
+                        const j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/releases/latest`);
+                        if(j && j?.tag_name){
+                          this.#setVersion(app, `${j.tag_name}`.replace(this.github[app].replace, ""));
+                        }
+                      break;
+
+                      case "python":
+                        for(let i=1; i<=10; i++){
+                          const j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/tags?page=${i}`);
+                          if(j && Array.isArray(j) && j.length > 0){
+                            const found = this.github[app].match(j);
+                            if(found){
+                              this.#setVersion(app, found);
+                              break;
+                            }
+                          }
+                        }
+                      break;
+                    }
+                  }catch(e){
+                    core.warning(`error processing ${app}: ${e}`);
+                  }
+                }
+                writeFileSync(path, JSON.stringify(this.json, null, 2));
+              }
+
+              async #fetchJson(url){
+                const response = await fetch(url);
+                if(!response.ok){
+                  throw new Error(`error fetching url: ${response.status}`);
+                }
+                return(await response.json());
+              }
+
+              #setVersion(app, version){
+                const v = semver.valid(semver.coerce(version));
+                if(v){
+                  this.json[app] = v;
+                }else{
+                  throw new Error(`could not update version for ${app}: ${version}, is not a valid semver (${v})!`);
+                }
+              }
+            }
+
+            try{
+              const latest = new Latest();
+              await latest.update();
+            }catch(e){
+              core.setFailed(e);
+            }
+
+      - name: checkout
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ./src/semver/latest.json
+          git commit -m "chore: auto update versions"
+          git push origin HEAD:master
