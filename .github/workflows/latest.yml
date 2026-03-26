@@ -56,10 +56,12 @@ jobs:
                   replace:/v/ig
                 },
                 pcre2:{
+                  semver:"m.m",
                   repo:"PCRE2Project/pcre2",
                   replace:/pcre2-/ig
                 },
                 headers_more_nginx_module:{
+                  semver:"m.m",
                   repo:"openresty/headers-more-nginx-module",
                   match:(json) => {
                     for(const tag of json){
@@ -98,7 +100,7 @@ jobs:
                       case "njs":
                         j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/releases/latest`);
                         if(j && j?.tag_name){
-                          this.#setVersion(app, `${j.tag_name}`.replace(this.github[app].replace, ""));
+                          this.#setVersion(app, `${j.tag_name}`.replace(this.github[app].replace, ""), this.github[app]?.semver);
                         }
                       break;
 
@@ -109,7 +111,7 @@ jobs:
                           if(j && Array.isArray(j) && j.length > 0){
                             const found = this.github[app].match(j);
                             if(found){
-                              this.#setVersion(app, found);
+                              this.#setVersion(app, found, this.github[app]?.semver);
                               break;
                             }
                           }
@@ -131,14 +133,17 @@ jobs:
                 return(await response.json());
               }
 
-              #setVersion(app, version){
-                const v = semver.valid(semver.coerce(version));
+              #setVersion(app, version, format){
+                version = semver.valid(semver.coerce(version));
                 if(v){
-                  if(this.json[app] !== v){
-                    core.info(`updated semver for ${app} from ${this.json[app]} to ${v}`);
-                    this.json[app] = v;
+                  version = ((null !== format && format) ? format : "m.m.p")
+                    .replace(/m\.m\.p/i, `${semver.major(v)}.${semver.minor(v)}.${semver.patch(v)}`)
+                    .replace(/m\.m\/i, `${semver.major(v)}.${semver.minor(v)}`);
+                  if(this.json[app] !== version){
+                    core.warning(`updated semver for ${app} from ${this.json[app]} to ${version}`);
+                    this.json[app] = version;
                   }else{
-                    core.warning(`no updated needed for ${app}!`);
+                    core.info(`no updated needed for ${app}!`);
                   }
                 }else{
                   throw new Error(`could not update version for ${app}: ${version}, is not a valid semver (${v})!`);
