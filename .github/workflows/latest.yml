@@ -50,7 +50,11 @@ jobs:
                     }
                     return(false);
                   }
-                }
+                },
+                zlib:{
+                  repo:"madler/zlib",
+                  replace:/v/ig
+                },
               };
 
               constructor(){}
@@ -70,6 +74,7 @@ jobs:
                       break;
 
                       case "openssl":
+                      case "zlib":
                         j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/releases/latest`);
                         if(j && j?.tag_name){
                           this.#setVersion(app, `${j.tag_name}`.replace(this.github[app].replace, ""));
