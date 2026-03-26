@@ -135,10 +135,10 @@ jobs:
 
               #setVersion(app, version, format){
                 version = semver.valid(semver.coerce(version));
-                if(v){
+                if(version){
                   version = ((null !== format && format) ? format : "m.m.p")
-                    .replace(/m\.m\.p/i, `${semver.major(v)}.${semver.minor(v)}.${semver.patch(v)}`)
-                    .replace(/m\.m/i, `${semver.major(v)}.${semver.minor(v)}`);
+                    .replace(/m\.m\.p/i, `${semver.major(version)}.${semver.minor(version)}.${semver.patch(version)}`)
+                    .replace(/m\.m/i, `${semver.major(version)}.${semver.minor(version)}`);
                   if(this.json[app] !== version){
                     core.warning(`updated semver for ${app} from ${this.json[app]} to ${version}`);
                     this.json[app] = version;
@@ -146,7 +146,7 @@ jobs:
                     core.info(`no updated needed for ${app}!`);
                   }
                 }else{
-                  throw new Error(`could not update version for ${app}: ${version}, is not a valid semver (${v})!`);
+                  throw new Error(`could not update version for ${app}: ${version}, is not a valid semver!`);
                 }
               }
             }
