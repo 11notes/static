@@ -2,5 +2,6 @@
   "go": [
     "docker-adguard"
   ],
-  "python": []
+  "python": [],
+  "php": []
 }
