@@ -98,6 +98,10 @@ jobs:
                   repo:"nginx/njs",
                   replace:/v/ig
                 },
+                php:{
+                  repo:"php/php-src",
+                  replace:/php-/ig
+                },
               };
 
               constructor(){}
@@ -120,6 +124,7 @@ jobs:
                       case "zlib":
                       case "pcre2":
                       case "njs":
+                      case "php":
                         j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/releases/latest`);
                         if(j && j?.tag_name){
                           this.#setVersion(app, `${j.tag_name}`.replace(this.github[app].replace, ""), this.github[app]?.semver);
