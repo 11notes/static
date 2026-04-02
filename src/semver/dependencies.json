@@ -1,4 +1,6 @@
 {
-  "go":[],
-  "python":[]
+  "go": [
+    "docker-adguard"
+  ],
+  "python": []
 }
