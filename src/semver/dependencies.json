@@ -4,5 +4,7 @@
   ],
   "python": [],
   "php": [],
-  "11notes-alpine-stable":[]
+  "11notes-alpine-stable": [
+    "docker-cron"
+  ]
 }
