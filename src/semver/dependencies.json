@@ -1,7 +1,8 @@
 {
   "go": [
     "docker-adguard",
-    "docker-node"
+    "docker-node",
+    "docker-netbird"
   ],
   "python": [],
   "php": [],
