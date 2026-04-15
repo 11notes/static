@@ -11,6 +11,7 @@
   ],
   "php": [],
   "11notes-alpine-stable": [
-    "docker-cron"
+    "docker-cron",
+    "docker-radarr"
   ]
 }
