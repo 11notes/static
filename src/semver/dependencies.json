@@ -6,7 +6,9 @@
     "docker-distroless",
     "docker-configarr"
   ],
-  "python": [],
+  "python": [
+    "docker-medikeep"
+  ],
   "php": [],
   "11notes-alpine-stable": [
     "docker-cron"
