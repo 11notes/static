@@ -3,7 +3,8 @@
     "docker-adguard",
     "docker-node",
     "docker-netbird",
-    "docker-distroless"
+    "docker-distroless",
+    "docker-configarr"
   ],
   "python": [],
   "php": [],
