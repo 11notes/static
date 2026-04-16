@@ -7,6 +7,6 @@
   "pcre2": "10.47",
   "headers_more_nginx_module": "0.38",
   "njs": "0.9.6",
-  "libxml2": "2.15.2",
+  "libxml2": "2.15.3",
   "libxslt": "1.1.45"
 }
