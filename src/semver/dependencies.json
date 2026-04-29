@@ -4,7 +4,8 @@
     "docker-node",
     "docker-netbird",
     "docker-distroless",
-    "docker-configarr"
+    "docker-configarr",
+    "docker-ente"
   ],
   "python": [
     "docker-medikeep"
