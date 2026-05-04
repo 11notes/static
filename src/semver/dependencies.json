@@ -7,7 +7,8 @@
     "docker-configarr",
     "docker-ente",
     "docker-unbound",
-    "docker-qbittorrent"
+    "docker-qbittorrent",
+    "docker-pocket-id"
   ],
   "python": [
     "docker-medikeep",
