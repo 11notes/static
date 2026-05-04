@@ -40,6 +40,17 @@ jobs:
                   repo:"openssl/openssl",
                   replace:/openssl-/ig
                 },
+                openssl_lts:{
+                  repo:"openssl/openssl",
+                  match:(json) => {
+                    for(const tag of json){
+                      if(tag?.name && `${tag.name}`.match(/openssl-3\.5\.[^A-Za-z]{1,}$/ig)){
+                        return(tag.name.replace(/openssl-/ig, ''));
+                      }
+                    }
+                    return(false);
+                  }
+                },
                 python:{
                   repo:"python/cpython",
                   match:(json) => {
@@ -135,6 +146,7 @@ jobs:
                       case "headers_more_nginx_module":
                       case "libxml2":
                       case "libxslt":
+                      case "openssl_lts":
                         for(let i=1; i<=10; i++){
                           j = await this.#fetchJson(`https://api.github.com/repos/${this.github[app].repo}/tags?page=${i}`);
                           if(j && Array.isArray(j) && j.length > 0){
