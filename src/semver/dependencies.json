@@ -8,7 +8,8 @@
     "docker-ente"
   ],
   "python": [
-    "docker-medikeep"
+    "docker-medikeep",
+    "docker-sabnzbd"
   ],
   "php": [],
   "11notes-alpine-stable": [
