@@ -6,7 +6,8 @@
     "docker-distroless",
     "docker-configarr",
     "docker-ente",
-    "docker-unbound"
+    "docker-unbound",
+    "docker-qbittorrent"
   ],
   "python": [
     "docker-medikeep",
