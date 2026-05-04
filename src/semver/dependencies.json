@@ -5,7 +5,8 @@
     "docker-netbird",
     "docker-distroless",
     "docker-configarr",
-    "docker-ente"
+    "docker-ente",
+    "docker-unbound"
   ],
   "python": [
     "docker-medikeep",
