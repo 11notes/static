@@ -20,6 +20,7 @@
     "docker-cron",
     "docker-radarr",
     "docker-python",
-    "docker-dotnetsdk"
+    "docker-dotnetsdk",
+    "docker-prowlarr"
   ]
 }
