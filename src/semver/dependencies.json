@@ -19,6 +19,7 @@
   "11notes-alpine-stable": [
     "docker-cron",
     "docker-radarr",
-    "docker-python"
+    "docker-python",
+    "docker-dotnetsdk"
   ]
 }
