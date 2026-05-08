@@ -8,7 +8,8 @@
     "docker-ente",
     "docker-unbound",
     "docker-qbittorrent",
-    "docker-pocket-id"
+    "docker-pocket-id",
+    "docker-tinyauth"
   ],
   "python": [
     "docker-medikeep",
