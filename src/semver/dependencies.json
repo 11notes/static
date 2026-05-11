@@ -9,7 +9,8 @@
     "docker-unbound",
     "docker-qbittorrent",
     "docker-pocket-id",
-    "docker-tinyauth"
+    "docker-tinyauth",
+    "docker-radicale"
   ],
   "python": [
     "docker-medikeep",
