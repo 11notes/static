@@ -22,6 +22,7 @@
     "docker-radarr",
     "docker-python",
     "docker-dotnetsdk",
-    "docker-prowlarr"
+    "docker-prowlarr",
+    "docker-sonarr"
   ]
 }
