@@ -10,7 +10,8 @@
     "docker-qbittorrent",
     "docker-pocket-id",
     "docker-tinyauth",
-    "docker-radicale"
+    "docker-radicale",
+    "docker-adguard-sync"
   ],
   "python": [
     "docker-medikeep",
