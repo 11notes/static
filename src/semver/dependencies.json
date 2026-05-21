@@ -11,7 +11,8 @@
     "docker-pocket-id",
     "docker-tinyauth",
     "docker-radicale",
-    "docker-adguard-sync"
+    "docker-adguard-sync",
+    "docker-patchmon"
   ],
   "python": [
     "docker-medikeep",
