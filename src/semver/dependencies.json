@@ -26,6 +26,7 @@
     "docker-python",
     "docker-dotnetsdk",
     "docker-prowlarr",
-    "docker-sonarr"
+    "docker-sonarr",
+    "docker-sftp"
   ]
 }
