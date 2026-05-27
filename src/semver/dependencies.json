@@ -12,7 +12,8 @@
     "docker-tinyauth",
     "docker-radicale",
     "docker-adguard-sync",
-    "docker-patchmon"
+    "docker-patchmon",
+    "docker-redis"
   ],
   "python": [
     "docker-medikeep",
