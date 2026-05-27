@@ -13,7 +13,8 @@
     "docker-radicale",
     "docker-adguard-sync",
     "docker-patchmon",
-    "docker-redis"
+    "docker-redis",
+    "docker-homeassistant"
   ],
   "python": [
     "docker-medikeep",
