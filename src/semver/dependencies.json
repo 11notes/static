@@ -28,6 +28,7 @@
     "docker-dotnetsdk",
     "docker-prowlarr",
     "docker-sonarr",
-    "docker-sftp"
+    "docker-sftp",
+    "docker-rust"
   ]
 }
