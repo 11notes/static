@@ -14,7 +14,8 @@
     "docker-adguard-sync",
     "docker-patchmon",
     "docker-redis",
-    "docker-homeassistant"
+    "docker-homeassistant",
+    "docker-sshpiper"
   ],
   "python": [
     "docker-medikeep",
