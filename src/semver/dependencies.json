@@ -15,7 +15,8 @@
     "docker-patchmon",
     "docker-redis",
     "docker-homeassistant",
-    "docker-sshpiper"
+    "docker-sshpiper",
+    "docker-lego"
   ],
   "python": [
     "docker-medikeep",
