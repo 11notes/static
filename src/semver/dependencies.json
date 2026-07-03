@@ -16,7 +16,8 @@
     "docker-redis",
     "docker-homeassistant",
     "docker-sshpiper",
-    "docker-lego"
+    "docker-lego",
+    "docker-prometheus"
   ],
   "python": [
     "docker-medikeep",
