@@ -35,6 +35,7 @@
     "docker-rust",
     "docker-talosadmin",
     "docker-kea",
-    "docker-rclone"
+    "docker-rclone",
+    "docker-postgres"
   ]
 }
