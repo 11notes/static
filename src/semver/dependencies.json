@@ -37,6 +37,7 @@
     "docker-talosadmin",
     "docker-kea",
     "docker-rclone",
-    "docker-postgres"
+    "docker-postgres",
+    "docker-k8s-init"
   ]
 }
