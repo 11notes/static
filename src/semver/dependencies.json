@@ -18,7 +18,8 @@
     "docker-sshpiper",
     "docker-lego",
     "docker-prometheus",
-    "docker-ilo-metrics"
+    "docker-ilo-metrics",
+    "docker-keycloak"
   ],
   "python": [
     "docker-medikeep",
