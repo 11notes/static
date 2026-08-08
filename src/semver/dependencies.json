@@ -39,6 +39,7 @@
     "docker-kea",
     "docker-rclone",
     "docker-postgres",
-    "docker-k8s-init"
+    "docker-k8s-init",
+    "docker-netbird-exit-node"
   ]
 }
