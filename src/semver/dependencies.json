@@ -19,7 +19,8 @@
     "docker-lego",
     "docker-prometheus",
     "docker-ilo-metrics",
-    "docker-keycloak"
+    "docker-keycloak",
+    "docker-opentelemetry-collector"
   ],
   "python": [
     "docker-medikeep",
