@@ -41,6 +41,7 @@
     "docker-rclone",
     "docker-postgres",
     "docker-k8s-init",
-    "docker-netbird-exit-node"
+    "docker-netbird-exit-node",
+    "docker-netbird-client"
   ]
 }
