@@ -20,7 +20,8 @@
     "docker-prometheus",
     "docker-ilo-metrics",
     "docker-keycloak",
-    "docker-opentelemetry-collector"
+    "docker-opentelemetry-collector",
+    "docker-beszel"
   ],
   "python": [
     "docker-medikeep",
