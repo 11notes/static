@@ -21,7 +21,8 @@
     "docker-ilo-metrics",
     "docker-keycloak",
     "docker-opentelemetry-collector",
-    "docker-beszel"
+    "docker-beszel",
+    "docker-socket-proxy"
   ],
   "python": [
     "docker-medikeep",
