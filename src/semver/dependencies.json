@@ -26,7 +26,8 @@
   ],
   "python": [
     "docker-medikeep",
-    "docker-sabnzbd"
+    "docker-sabnzbd",
+    "docker-kms"
   ],
   "php": [],
   "11notes-alpine-stable": [
